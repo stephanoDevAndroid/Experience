@@ -4,16 +4,17 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.experience.ClearDomain.UserModel
 import com.example.experience.Koin.MyViewModel
 import com.example.experience.R
 import com.example.experience.recycleview.RecyclerAdapater
 import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity() {
-    //    val list = ArrayList<UserModel>()
 
     private lateinit var adapter: RecyclerAdapater
     private val viewModel: MyViewModel by inject()
@@ -40,15 +41,4 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-//    private fun listAdd() {
-//        list.add(UserModel("Muhammad", "Rustamov"))
-//        list.add(UserModel("Sardor", "Niyazmetov"))
-//        list.add(UserModel("Jamshid", "Tutuboyev"))
-//        list.add(UserModel("Otabek", "Mahkamov"))
-//        list.add(UserModel("Doniyor", "Toxtaboyev"))
-//        list.add(UserModel("Polat", "Alemdar"))
-//        list.add(UserModel("Andrew", "Lincoln"))
-//        list.add(UserModel("Rick", "Grimes"))
-//        list.add(UserModel("Carl", "Grime"))
-//    }
 }

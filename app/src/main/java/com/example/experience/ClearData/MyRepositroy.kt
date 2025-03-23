@@ -2,8 +2,13 @@ package com.example.experience.ClearData
 
 import com.example.experience.ClearDomain.DataInter
 import com.example.experience.ClearDomain.UserModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class MyRepositroy() : DataInter {
+
+    private val scope = CoroutineScope(Dispatchers.IO)
 
     private var list = mutableListOf(
         UserModel("Muhammad", "Rustamov"),
@@ -11,9 +16,8 @@ class MyRepositroy() : DataInter {
         UserModel("Doniyor", "Toxtaboyev"),
         UserModel("Polat", "Alemdar"),
         UserModel("Andrew", "Lincoln"),
-        UserModel("Rick", "Grimes"),
-        UserModel("Carl", "Grime")
     )
+
 
     override suspend fun getData(): List<UserModel> {
         return list

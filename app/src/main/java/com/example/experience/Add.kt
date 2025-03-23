@@ -12,3 +12,9 @@ import android.widget.EditText
 const val ARG_PARAM1 = "param1"
 const val ARG_PARAM2 = "param2"
 
+//Mapper funksiyalari yaratish
+//Agar User va UserEntity ni bir-biriga aylantirish kerak bo‘lsa, mapper funksiya yozing:
+//
+//fun User.toEntity() = UserEntity(name = this.name, age = this.age)
+//fun UserEntity.toUser() = User(name = this.name, age = this.age)
+//Shunda siz kerakli joyda User ni UserEntity ga aylantirib ishlatishingiz mumkin.

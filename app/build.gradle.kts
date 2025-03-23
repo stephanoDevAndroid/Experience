@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("kotlin-kapt")
 }
 
 android {
@@ -37,7 +38,23 @@ android {
 
 dependencies {
 
+    // Room
     implementation("io.insert-koin:koin-android:3.5.0")
+    implementation ("androidx.room:room-runtime:2.6.1")
+    kapt ("androidx.room:room-compiler:2.6.1")
+
+    // Coroutin
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
+    implementation ("androidx.room:room-ktx:2.6.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+
+    // RxJava
+    implementation ("io.reactivex.rxjava3:rxandroid:3.0.2")
+    implementation ("com.jakewharton.rxbinding4:rxbinding:4.0.0")
+
+    // by viewModels{}
+    implementation ("androidx.fragment:fragment-ktx:1.6.2")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

@@ -9,6 +9,7 @@ import com.example.experience.ClearDomain.UserModel
 import com.example.experience.R
 
 class RecyclerAdapater(val list: List<UserModel>): RecyclerView.Adapter<RecyclerAdapater.ViewHolder>() {
+
     class ViewHolder(view: View): RecyclerView.ViewHolder(view){
         val name = view.findViewById<TextView>(R.id.name)
         val lastName = view.findViewById<TextView>(R.id.lastName)
