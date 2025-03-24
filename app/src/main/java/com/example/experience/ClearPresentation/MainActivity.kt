@@ -4,20 +4,17 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.experience.ClearDomain.UserModel
-import com.example.experience.Koin.MyViewModel
 import com.example.experience.R
 import com.example.experience.recycleview.RecyclerAdapater
-import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var adapter: RecyclerAdapater
-    private val viewModel: MyViewModel by inject()
+    private val viewModel: MyViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

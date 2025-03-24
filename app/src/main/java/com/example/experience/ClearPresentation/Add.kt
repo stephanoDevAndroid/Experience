@@ -10,7 +10,6 @@ import android.widget.EditText
 import androidx.fragment.app.Fragment
 import com.example.experience.ARG_PARAM1
 import com.example.experience.ARG_PARAM2
-import com.example.experience.Koin.MyViewModel
 import com.example.experience.R
 import org.koin.android.ext.android.inject
 
