@@ -49,7 +49,7 @@ class MyRepositroy(private val userDao: UserDao) : DataInter {
         userDao.insert(user)
     }
 
-    fun RoomUser.toUserModel() = UserModel(
+    private fun RoomUser.toUserModel() = UserModel(
         name = this.name,
         lastName = this.lastName
     )
