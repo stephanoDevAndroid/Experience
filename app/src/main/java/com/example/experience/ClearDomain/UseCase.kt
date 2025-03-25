@@ -1,19 +1,26 @@
 package com.example.experience.ClearDomain
 
-import androidx.lifecycle.ViewModel
 import com.example.experience.ClearData.MyRepositroy
+import com.example.experience.ClearData.RoomRepositoryImpl
 import com.example.experience.room.RoomUser
 
-class UseCase(private val repositroy: MyRepositroy) {
-    fun execute(): List<UserModel> {
-        return repositroy.getData()
-    }
-
-    fun addData(name: String, lastNAme: String){
-        repositroy.addData(name, lastNAme)
+class UseCase(
+    private val repositroy: MyRepositroy,
+    private val roomRepository: RoomRepositoryImpl
+) {
+    suspend fun execute(): List<UserModel> {
+        val local = repositroy.getData()
+        val room = roomRepository.getAllData()
+        return local + room.toUserModelList()
     }
 
     suspend fun insert(user: RoomUser){
-        repositroy.insert(user)
+        roomRepository.insert(user)
     }
+
+    private fun List<RoomUser>.toUserModelList(): List<UserModel>{
+        return this.map { it.toUserModel() }
+    }
+    private fun RoomUser.toUserModel() = UserModel(name = this.name, lastName = this.lastName)
+
 }

@@ -8,9 +8,12 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import com.example.experience.ARG_PARAM1
 import com.example.experience.ARG_PARAM2
 import com.example.experience.R
+import com.example.experience.room.RoomUser
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
 class Add : Fragment() {
@@ -45,10 +48,14 @@ class Add : Fragment() {
         val back = view.findViewById<Button>(R.id.backBtn)
 
         aply.setOnClickListener {
-            viewModel.addData(
-                editName.text.toString(),
-                editLast.text.toString()
-            )
+            lifecycleScope.launch {
+                viewModel.insert(
+                    RoomUser(
+                        name = editName.text.toString(),
+                        lastName = editLast.text.toString()
+                    )
+                )
+            }
             val intent = Intent(context, MainActivity::class.java)
             startActivity(intent)
 

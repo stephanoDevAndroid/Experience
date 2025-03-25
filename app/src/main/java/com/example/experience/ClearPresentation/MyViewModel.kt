@@ -9,13 +9,9 @@ import kotlinx.coroutines.launch
 
 class MyViewModel(private val useCase: UseCase) : ViewModel() {
 
-    fun loadUser(onResult: (List<UserModel>) -> Unit){
+    suspend fun loadUser(onResult: (List<UserModel>) -> Unit){
         val users = useCase.execute()
         onResult(users)
-    }
-
-    fun addData(name: String, lastNAme: String){
-        useCase.addData(name, lastNAme)
     }
 
     suspend fun insert(user: RoomUser){
