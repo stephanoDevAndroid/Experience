@@ -10,6 +10,7 @@ class RoomRepositoryImpl(private val userDao: UserDao): RoomRepository {
         return userDao.getALlData()
     }
 
+
     override suspend fun insert(user: RoomUser) {
         userDao.insert(user)
     }

@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 interface UserDao {
 
     @Query("SELECT * FROM user_table")
-    fun getALlData(): List<RoomUser>
+    suspend fun getALlData(): List<RoomUser>
 
     @Insert
     suspend fun insert(user: RoomUser)

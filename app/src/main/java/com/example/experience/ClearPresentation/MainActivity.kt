@@ -5,10 +5,12 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.experience.R
 import com.example.experience.recycleview.RecyclerAdapater
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
@@ -23,9 +25,12 @@ class MainActivity : AppCompatActivity() {
 
         val rview = findViewById<RecyclerView>(R.id.r_view)
         val addBtn = findViewById<Button>(R.id.addBtn)
+        adapter = RecyclerAdapater(emptyList())
 
-        viewModel.loadUser { users ->
-            adapter = RecyclerAdapater(users)
+        lifecycleScope.launch {
+            viewModel.loadUser { users ->
+                adapter.updateData(users)
+            }
         }
         rview.adapter = adapter
         rview.layoutManager = LinearLayoutManager(this)
