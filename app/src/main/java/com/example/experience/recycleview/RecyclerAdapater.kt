@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.experience.ClearDomain.UserModel
 import com.example.experience.R
 
-class RecyclerAdapater(var list: List<UserModel>): RecyclerView.Adapter<RecyclerAdapater.ViewHolder>() {
+class RecyclerAdapater(val list: MutableList<UserModel>): RecyclerView.Adapter<RecyclerAdapater.ViewHolder>() {
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view){
         val name = view.findViewById<TextView>(R.id.name)
@@ -29,8 +29,9 @@ class RecyclerAdapater(var list: List<UserModel>): RecyclerView.Adapter<Recycler
         holder.lastName.text = list[position].lastName
     }
 
-    fun updateData(newList: List<UserModel>){
-        list = newList
+    fun updateData(newList: MutableList<UserModel>){
+        list.clear()
+        list.addAll(newList)
         notifyDataSetChanged()
     }
 }

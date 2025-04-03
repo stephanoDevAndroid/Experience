@@ -13,12 +13,6 @@ class MyRepositroy(private val userDao: UserDao) : DataInter {
 
     private val scope = CoroutineScope(Dispatchers.IO)
 
-    init {
-        scope.launch {
-            getRoomData()
-        }
-    }
-
     private var list = mutableListOf(
         UserModel("Muhammad", "Rustamov"),
         UserModel("Otabek", "Mahkamov"),
@@ -27,33 +21,7 @@ class MyRepositroy(private val userDao: UserDao) : DataInter {
         UserModel("Andrew", "Lincoln"),
     )
 
-    override fun getData(): List<UserModel> {
+    override fun getData(): MutableList<UserModel> {
         return list
     }
-
-    override fun addData(name: String, lastName: String) {
-        list.add(UserModel(name, lastName))
-        scope.launch {
-            insert(RoomUser(name = name, lastName = lastName))
-        }
-    }
-
-    override suspend fun getRoomData() {
-        val users = userDao.getALlData()
-        users.forEach {user ->
-            list.add(user.toUserModel())
-        }
-    }
-
-    override suspend fun insert(user: RoomUser) {
-        userDao.insert(user)
-    }
-
-    private fun RoomUser.toUserModel() = UserModel(
-        name = this.name,
-        lastName = this.lastName
-    )
-
-
-
 }

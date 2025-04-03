@@ -25,13 +25,14 @@ class MainActivity : AppCompatActivity() {
 
         val rview = findViewById<RecyclerView>(R.id.r_view)
         val addBtn = findViewById<Button>(R.id.addBtn)
-        adapter = RecyclerAdapater(emptyList())
+        adapter = RecyclerAdapater(mutableListOf())
 
-        lifecycleScope.launch {
-            viewModel.loadUser { users ->
-                adapter.updateData(users)
-            }
+        viewModel.users.observe(this){users ->
+            adapter.updateData(users)
         }
+        viewModel.loadUser()
+
+
         rview.adapter = adapter
         rview.layoutManager = LinearLayoutManager(this)
 
