@@ -13,6 +13,7 @@ import com.example.experience.ARG_PARAM1
 import com.example.experience.ARG_PARAM2
 import com.example.experience.R
 import com.example.experience.room.RoomUser
+import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
@@ -48,14 +49,12 @@ class Add : Fragment() {
         val back = view.findViewById<Button>(R.id.backBtn)
 
         aply.setOnClickListener {
-            lifecycleScope.launch {
                 viewModel.insert(
                     RoomUser(
                         name = editName.text.toString(),
                         lastName = editLast.text.toString()
                     )
-                )
-            }
+                ).subscribeOn(Schedulers.io()).subscribe()
             val intent = Intent(context, MainActivity::class.java)
             startActivity(intent)
 

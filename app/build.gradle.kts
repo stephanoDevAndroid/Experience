@@ -50,8 +50,9 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
     // RxJava
-    implementation ("io.reactivex.rxjava3:rxandroid:3.0.2")
-    implementation ("com.jakewharton.rxbinding4:rxbinding:4.0.0")
+    implementation ("androidx.room:room-rxjava2:2.6.1")
+    implementation ("io.reactivex.rxjava2:rxjava:2.2.21")
+    implementation ("io.reactivex.rxjava2:rxandroid:2.1.1")
 
     // by viewModels{}
     implementation ("androidx.fragment:fragment-ktx:1.6.2")

@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.users.observe(this){users ->
             adapter.updateData(users)
         }
-        viewModel.loadUser()
+        viewModel.loadUser(this)
 
 
         rview.adapter = adapter
