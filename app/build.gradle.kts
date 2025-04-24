@@ -38,6 +38,15 @@ android {
 
 dependencies {
 
+    // Unit testlar uchun
+    testImplementation ("junit:junit:4.13.2")
+
+    // (Agar kerak bo'lsa) Mockito - mock objectlar uchun
+    testImplementation ("org.mockito:mockito-core:4.8.0")
+
+    // LiveData yoki ViewModel bilan testlar uchun
+    testImplementation ("androidx.arch.core:core-testing:2.2.0")
+
     // Room
     implementation("io.insert-koin:koin-android:3.5.0")
     implementation ("androidx.room:room-runtime:2.6.1")
