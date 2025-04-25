@@ -2,7 +2,7 @@ package com.example.experience.Koin
 
 import android.content.Context
 import androidx.room.Room
-import com.example.experience.ClearData.MyRepositroy
+import com.example.experience.ClearData.MyRepository
 import com.example.experience.ClearData.RoomRepositoryImpl
 import com.example.experience.ClearDomain.DataInter
 import com.example.experience.ClearDomain.UseCase
@@ -13,7 +13,7 @@ import org.koin.dsl.module
 
 val appModule = module {
     single { get<AppDataBase>().userDao() }
-    single { MyRepositroy(get()) }
+    single { MyRepository() }
     single { RoomRepositoryImpl(get()) }
     factory { UseCase(get(), get()) }
     factory { MyViewModel(get()) }
@@ -21,7 +21,7 @@ val appModule = module {
 val dataBaseModule = module {
     single { getAppDataBase(androidContext()) }
     single { get<AppDataBase>().userDao() }
-    single<DataInter> { MyRepositroy(get()) }
+    single<DataInter> { MyRepository() }
 }
 fun getAppDataBase(context: Context): AppDataBase{
     return Room.databaseBuilder(

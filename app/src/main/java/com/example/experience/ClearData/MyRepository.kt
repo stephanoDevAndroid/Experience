@@ -2,14 +2,10 @@ package com.example.experience.ClearData
 
 import com.example.experience.ClearDomain.DataInter
 import com.example.experience.ClearDomain.UserModel
-import com.example.experience.room.RoomUser
-import com.example.experience.room.UserDao
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.cancel
-import kotlinx.coroutines.launch
 
-class MyRepositroy(private val userDao: UserDao) : DataInter {
+class MyRepository() : DataInter {
 
     private val scope = CoroutineScope(Dispatchers.IO)
 
